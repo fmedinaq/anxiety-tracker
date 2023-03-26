@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registro de valores en archivo CSV</title>
+	<script type="text/javascript">
+		function guardarEnCSV() {
+			var valor1 = document.getElementById("valor1").value;
+			var valor2 = document.getElementById("valor2").value;
+			var valor3 = document.getElementById("valor3").value;
+
+			// Crea una nueva fila con los valores ingresados
+			var nuevaFila = valor1 + "," + valor2 + "," + valor3 + "\n";
+
+			// Agrega la nueva fila al archivo CSV
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("POST", "guardar_csv.php", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("fila=" + nuevaFila);
+
+			// Mensaje de confirmación de registro
+			alert("Los valores han sido registrados en el archivo CSV.");
+		}
+	</script>
+</head>
+<body>
+	<h1>Registro de valores en archivo CSV</h1>
+	<label for="valor1">Valor 1:</label>
+	<input type="text" id="valor1"><br><br>
+	<label for="valor2">Valor 2:</label>
+	<input type="text" id="valor2"><br><br>
+	<label for="valor3">Valor 3:</label>
+	<input type="text" id="valor3"><br><br>
+	<button onclick="guardarEnCSV()">Registrar valores</button>
+</body>
+</html>
